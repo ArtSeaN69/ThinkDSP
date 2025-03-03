@@ -1,1 +1,26 @@
+# Get thinkdsp.py
+import os
+if not os.path.exists('thinkdsp.py'):
+ !wget https://github.com/AllenDowney/ThinkDSP/raw/master/code/thinkdsp.py
 
+from thinkdsp import CosSignal, SinSignal
+cos_sig1 = CosSignal(freq=440, amp=1.0, offset=0)
+cos_sig1.plot()
+
+sin_sig1 = SinSignal(freq=880, amp=0.5, offset=0)
+sin_sig1.plot()
+
+cos_sig2 = CosSignal(freq=1320, amp=2.0, offset=0)
+cos_sig2.plot()
+
+sin_sig2 = SinSignal(freq=220, amp=0.25, offset=0)
+sin_sig2.plot()
+
+cos_sig3 = CosSignal(freq=660, amp=0.75, offset=0)
+cos_sig3.plot()
+
+mix = sin_sig1 + cos_sig1 + sin_sig2 + cos_sig2 + cos_sig3
+mix.plot()
+
+wave = mix.make_wave (duration=0.5, start=0, framerate=11025) 
+wave.plot() 
