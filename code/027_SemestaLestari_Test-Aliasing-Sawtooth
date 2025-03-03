@@ -3,4 +3,11 @@ import os
 if not os.path.exists('thinkdsp.py'):
  !wget https://github.com/AllenDowney/ThinkDSP/raw/master/code/thinkdsp.py
 
+from thinkdsp import CosSignal, SinSignal
+from thinkdsp import SawtoothSignal
 
+signal1 = CosSignal (4500) 
+segmen1 = signal1.make_wave(durations=0.5, framerate=10000) 
+segmen1.apodize() 
+segmen1.normalize() 
+segmen1.make_audio() 
